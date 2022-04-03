@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 
 const LogForm = () => {
   const [name, setName] = useState('');
-  const [,setSubmitted] = useState(false);
+  const [age, setAge] = useState('0');
+  const [Location, setLocation] = useState('');
+  const [hasSubmitted ,setSubmitted] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -17,12 +19,17 @@ const LogForm = () => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Name:<input type="text" value={name} onChange={(e) => { setName(e.target.value); setSubmitted(false) }} /></label>
+          <label>Age <input type="number" value={age} onChange={(e) => { setAge(e.target.value); setSubmitted(false) }} /></label>
+          <label>Location <input type="text" value={Location} onChange={(e) => { setLocation(e.target.value); setSubmitted(false) }} /></label>
         </div>
         <input type="submit" value="Submit" />
       </form>
       <div>
         <h2>Results</h2>
             Name: {name}<br />
+            Location: {Location}<br />
+            Age: {age}<br />
+            {hasSubmitted && <p>Thank you for submitting the form</p>}
       </div>
     </div>
   );
